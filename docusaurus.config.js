@@ -11,8 +11,8 @@ module.exports = {
     navbar: {
       title: "Pico Stack",
       logo: {
-        alt: "My Site Logo",
-        src: "img/logo.svg"
+        alt: "Pico Logo",
+        src: "img/pico-logo.svg"
       },
       links: [
         {

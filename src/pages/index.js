@@ -8,19 +8,56 @@ import styles from "./styles.module.css";
 
 const features = [
   {
-    title: <>Hold up!</>,
-    imageUrl: "img/undraw_docusaurus_mountain.svg",
-    description: <>This site is a work in progress!</>
+    title: <>Simple</>,
+    // imageUrl: "img/.svg",
+    description: (
+      <>
+        The Pico Stack is what you reach for when Kubernetes is overkill. It's a
+        small collection of tools that do one job well.
+      </>
+    )
   },
   {
-    title: <>It's taking time</>,
-    imageUrl: "img/undraw_docusaurus_tree.svg",
-    description: <>It's a side project, so bear with me!</>
+    title: <>Containerised</>,
+    // imageUrl: "img/.svg",
+    description: (
+      <>
+        Everything must be containerised. It vastly simplifies the deployment,
+        maintenance and mobility of services. It provides a unified way of
+        configuring, monitoring and managing services.
+      </>
+    )
   },
   {
-    title: <>It also needs a logo!</>,
-    imageUrl: "img/undraw_docusaurus_react.svg",
-    description: <>Which I will get done soon!</>
+    title: <>Git-Ops and Infrastructure-As-Code</>,
+    // imageUrl: "img/.svg",
+    description: (
+      <>
+        Your infrastructure is just as important as your code. So why not treat
+        it that way? The Pico Stack encourages and implements these two ideas
+        wherever possible.
+      </>
+    )
+  },
+  {
+    title: <>Automated</>,
+    // imageUrl: "img/.svg",
+    description: (
+      <>
+        Whatever can be automated, should be. But things should also be easy to
+        intervene when things go wrong. Because things always go wrong!
+      </>
+    )
+  },
+  {
+    title: <>Transparent</>,
+    // imageUrl: "img/.svg",
+    description: (
+      <>
+        It should be easy to see what's happening. This means logging and
+        metrics. Alerts should be optional, but easy to set up.
+      </>
+    )
   }
 ];
 
