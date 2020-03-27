@@ -5,6 +5,7 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
+import chunk from "lodash/chunk";
 
 const features = [
   {
@@ -102,11 +103,13 @@ function Home() {
         {features && features.length && (
           <section className={styles.features}>
             <div className="container">
-              <div className="row">
-                {features.map((props, idx) => (
-                  <Feature key={idx} {...props} />
-                ))}
-              </div>
+              {chunk(features, 3).map((sub, idx) => (
+                <div className={classnames("row", styles.row)} key={idx}>
+                  {sub.map((props, idx) => (
+                    <Feature key={idx} {...props} />
+                  ))}
+                </div>
+              ))}
             </div>
           </section>
         )}
