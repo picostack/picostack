@@ -10,7 +10,7 @@ import chunk from "lodash/chunk";
 const features = [
   {
     title: <>Containerised</>,
-    // imageUrl: "img/.svg",
+    imageUrl: "img/pico-containerised.svg",
     description: (
       <>
         Everything must be containerised. It vastly simplifies the deployment,
@@ -21,7 +21,7 @@ const features = [
   },
   {
     title: <>Git-Ops and Infrastructure-As-Code</>,
-    // imageUrl: "img/.svg",
+    imageUrl: "img/pico-iac.svg",
     description: (
       <>
         Your infrastructure is just as important as your code. So why not treat
@@ -32,7 +32,7 @@ const features = [
   },
   {
     title: <>Automated</>,
-    // imageUrl: "img/.svg",
+    imageUrl: "img/pico-automated.svg",
     description: (
       <>
         Whatever can be automated, should be. But things should also be easy to
