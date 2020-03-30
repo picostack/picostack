@@ -9,16 +9,6 @@ import chunk from "lodash/chunk";
 
 const features = [
   {
-    title: <>Simple</>,
-    // imageUrl: "img/.svg",
-    description: (
-      <>
-        The Pico Stack is what you reach for when Kubernetes is overkill. It's a
-        small collection of tools that do one job well.
-      </>
-    )
-  },
-  {
     title: <>Containerised</>,
     // imageUrl: "img/.svg",
     description: (
@@ -47,16 +37,6 @@ const features = [
       <>
         Whatever can be automated, should be. But things should also be easy to
         intervene when things go wrong. Because things always go wrong!
-      </>
-    )
-  },
-  {
-    title: <>Transparent</>,
-    // imageUrl: "img/.svg",
-    description: (
-      <>
-        It should be easy to see what's happening. This means logging and
-        metrics. Alerts should be optional, but easy to set up.
       </>
     )
   }
