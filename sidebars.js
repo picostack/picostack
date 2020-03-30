@@ -7,8 +7,8 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Getting Started",
-      items: []
+      label: "Pico",
+      items: ["pico/overview", "pico/install", "pico/getting-started"]
     }
   ]
 };

@@ -5,22 +5,40 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
+import chunk from "lodash/chunk";
 
 const features = [
   {
-    title: <>Hold up!</>,
-    imageUrl: "img/undraw_docusaurus_mountain.svg",
-    description: <>This site is a work in progress!</>
+    title: <>Containerised</>,
+    // imageUrl: "img/.svg",
+    description: (
+      <>
+        Everything must be containerised. It vastly simplifies the deployment,
+        maintenance and mobility of services. It provides a unified way of
+        configuring, monitoring and managing services.
+      </>
+    )
   },
   {
-    title: <>It's taking time</>,
-    imageUrl: "img/undraw_docusaurus_tree.svg",
-    description: <>It's a side project, so bear with me!</>
+    title: <>Git-Ops and Infrastructure-As-Code</>,
+    // imageUrl: "img/.svg",
+    description: (
+      <>
+        Your infrastructure is just as important as your code. So why not treat
+        it that way? The Pico Stack encourages and implements these two ideas
+        wherever possible.
+      </>
+    )
   },
   {
-    title: <>It also needs a logo!</>,
-    imageUrl: "img/undraw_docusaurus_react.svg",
-    description: <>Which I will get done soon!</>
+    title: <>Automated</>,
+    // imageUrl: "img/.svg",
+    description: (
+      <>
+        Whatever can be automated, should be. But things should also be easy to
+        intervene when things go wrong. Because things always go wrong!
+      </>
+    )
   }
 ];
 
@@ -65,11 +83,13 @@ function Home() {
         {features && features.length && (
           <section className={styles.features}>
             <div className="container">
-              <div className="row">
-                {features.map((props, idx) => (
-                  <Feature key={idx} {...props} />
-                ))}
-              </div>
+              {chunk(features, 3).map((sub, idx) => (
+                <div className={classnames("row", styles.row)} key={idx}>
+                  {sub.map((props, idx) => (
+                    <Feature key={idx} {...props} />
+                  ))}
+                </div>
+              ))}
             </div>
           </section>
         )}
