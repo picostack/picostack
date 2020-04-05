@@ -1,0 +1,251 @@
+---
+title: Getting Started (Insecure)
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+This guide will walk you through a simple standalone Pico deployment that does
+not use a secret store for credentials. This is not recommended for production
+use if you want to securely pass credentials to services such as databases or
+API servers.
+
+## Deploy Pico
+
+The first step is to get a running Pico instance using the example configuration
+stored in
+[this repository](https://github.com/picostack/pico-example-config-no-auth).
+
+### Fork The Examples
+
+Now, to properly demonstrate how Pico works with GitOps/IaC, go ahead and fork
+the
+[config repository](https://github.com/picostack/pico-example-config-no-auth)
+and the [target repository](https://github.com/picostack/pico-example-target)
+and clone these to your computer.
+
+### Replace `picostack` With Your Username
+
+Open up the file `main.js` inside the _config repo_ and replace the `url`
+property with your fork:
+
+```js {3}
+T({
+  name: "pico-test-one",
+  url: "https://github.com/picostack/pico-example-target",
+  up: ["docker-compose", "up"],
+  down: ["docker-compose", "down"],
+});
+```
+
+Commit the change and push, now you're ready to deploy!
+
+Now from here on, anywhere in the documentation and configuration files that
+references the URL
+`https://github.com/_YOUR_USERNAME_/pico-example-config-no-auth`, replace
+`_YOUR_USERNAME_` with your own GitHub username.
+
+### Deploy
+
+<Tabs
+  defaultValue="container"
+  values={[
+    { label: 'In Container', value: 'container', },
+    { label: 'On Host OS', value: 'host', },
+  ]
+}>
+<TabItem value="container">
+
+### As Container
+
+Make a new folder for this guide then grab this `docker-compose.yml` file:
+
+```yml
+version: "3"
+
+services:
+  pico:
+    image: picostack/pico
+    command: run https://github.com/_YOUR_USERNAME_/pico-example-config-no-auth
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./cache:/cache
+```
+
+And run:
+
+```
+docker-compose up
+```
+
+</TabItem>
+<TabItem value="host">
+
+### On Host OS
+
+If you have a Bash shell available:
+
+```
+curl -s https://raw.githubusercontent.com/picostack/pico/master/install.sh | bash
+```
+
+Otherwise, download a binary from the
+[releases page](https://github.com/picostack/pico/releases).
+
+Then run:
+
+```
+pico run https://github.com/_YOUR_USERNAME_/pico-example-config-no-auth
+```
+
+</TabItem>
+</Tabs>
+
+Now you have a running instance of Pico, you should see the following in your
+terminal:
+
+:::note
+
+If you deployed Pico with Docker Compose, your output will look slightly
+different to the example below since it will be prefixed with `pico_1 |`.
+
+:::
+
+```
+{"level":"info","ts":"2020-04-05T16:26:35.067Z","caller":"pico/main.go:96","msg":"service initialised"}
+Creating pico-test-one_hello_1 ... done
+Attaching to pico-test-one_hello_1
+hello_1  |
+hello_1  | Hello from Docker!
+hello_1  | This message shows that your installation appears to be working correctly.
+hello_1  |
+hello_1  | To generate this message, Docker took the following steps:
+hello_1  |  1. The Docker client contacted the Docker daemon.
+hello_1  |  2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+hello_1  |     (amd64)
+hello_1  |  3. The Docker daemon created a new container from that image which runs the
+hello_1  |     executable that produces the output you are currently reading.
+hello_1  |  4. The Docker daemon streamed that output to the Docker client, which sent it
+hello_1  |     to your terminal.
+hello_1  |
+hello_1  | To try something more ambitious, you can run an Ubuntu container with:
+hello_1  |  $ docker run -it ubuntu bash
+hello_1  |
+hello_1  | Share images, automate workflows, and more with a free Docker ID:
+hello_1  |  https://hub.docker.com/
+hello_1  |
+hello_1  | For more examples and ideas, visit:
+hello_1  |  https://docs.docker.com/get-started/
+hello_1  |
+pico-test-one_hello_1 exited with code 0
+```
+
+Congratulations! You just:
+
+1. Started Pico
+2. Told Pico to read configuration files from a repository
+3. Watched Pico pull a [target](../reference/target) and execute
+   `docker-compose up` inside it
+
+## Update the Target
+
+Leave Pico running in the background - it's designed to be left to its own
+devices while you push commits.
+
+What you did above was pull your fork of the Pico config example. This example
+contained a single target, that lives at
+`https://github.com/_YOUR_USERNAME_/pico-example-target` so now it's time to
+push a change to this repository and watch Pico react to it.
+
+This repository already has a branch named `merge-me` that contains a small
+change to demonstrate this.
+
+Open up the `pico-example-target` directory in your favourite terminal or editor
+and merge the branch named `merge-me` into `master`:
+
+```
+❯ git merge merge-me
+Updating b4a745c..4bf7184
+Fast-forward
+ docker-compose.yml | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+```
+
+If you open up `docker-compose.yml` you'll notice the `hello` service has
+changed:
+
+```yaml {5,6}
+version: "3"
+
+services:
+  hello:
+    image: busybox
+    command: echo "Hello from the Busybox container!"
+```
+
+This merge swapped out the image from `hello-world` to `busybox` and added a
+command that prints to the console.
+
+Commit this change to master and push. Switch back to the terminal where you
+started Pico and you'll see some new output shortly:
+
+```
+pico-test-one_hello_1 exited with code 0
+Recreating pico-test-one_hello_1 ... done
+Attaching to pico-test-one_hello_1
+hello_1  | Hello from the Busybox container!
+pico-test-one_hello_1 exited with code 0
+```
+
+Pico pulled the new commit and ran `docker-compose up`. Docker Compose then did
+the rest by diffing against the new Compose configuration, stopping the old
+`hello-world` container and starting a new `busybox` container with the greeting
+message.
+
+And of course you can `git revert HEAD` and roll back to the old configuration.
+
+## Update the Config
+
+Now you can update the configuration in your fork of the config repo.
+
+Open up the `main.js` file and duplicate the target a couple of times, be sure
+to give them unique names:
+
+```js {8-20}
+T({
+  name: "pico-test-one",
+  url: "https://github.com/picostack/pico-example-target",
+  up: ["docker-compose", "up"],
+  down: ["docker-compose", "down"],
+});
+
+T({
+  name: "pico-test-two",
+  url: "https://github.com/picostack/pico-example-target",
+  up: ["docker-compose", "up"],
+  down: ["docker-compose", "down"],
+});
+
+T({
+  name: "pico-test-three",
+  url: "https://github.com/picostack/pico-example-target",
+  up: ["docker-compose", "up"],
+  down: ["docker-compose", "down"],
+});
+```
+
+Push this and you'll see Pico spawn two more targets.
+
+Play around adding and removing targets, you can use any project you want, it
+doesn't need to use Docker Compose.
+
+## Conclusion
+
+This example demonstrated a simple automation setup for applications deployed
+with Docker Compose. Replace the hello-world example with a full application and
+Pico allows you to automatically update configuration variables, image versions,
+volume mounts etc. simply by pushing them to Git.
+
+On top of this, you can then apply Git branching strategies and a review process
+to your configuration files. This is usually referred to as GitOps or
+Infrastructure-as-Code.

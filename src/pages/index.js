@@ -13,33 +13,31 @@ const features = [
     imageUrl: "img/pico-containerised.svg",
     description: (
       <>
-        Everything must be containerised. It vastly simplifies the deployment,
-        maintenance and mobility of services. It provides a unified way of
-        configuring, monitoring and managing services.
+        Everything that can be in a container, should be. This provides a
+        unified way of managing, configuring and monitoring services.
       </>
-    )
+    ),
   },
   {
     title: <>Git-Ops and Infrastructure-As-Code</>,
     imageUrl: "img/pico-iac.svg",
     description: (
       <>
-        Your infrastructure is just as important as your code. So why not treat
-        it that way? The Pico Stack encourages and implements these two ideas
-        wherever possible.
+        Your infrastructure is just as important as your code. So treat it the
+        same. The Pico Stack encourages and implements this wherever possible.
       </>
-    )
+    ),
   },
   {
     title: <>Automated</>,
     imageUrl: "img/pico-automated.svg",
     description: (
       <>
-        Whatever can be automated, should be. But things should also be easy to
+        Whatever can be automated, should be. But it should also be easy to
         intervene when things go wrong. Because things always go wrong!
       </>
-    )
-  }
+    ),
+  },
 ];
 
 function Feature({ imageUrl, title, description }) {

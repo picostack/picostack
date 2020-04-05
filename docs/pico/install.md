@@ -22,11 +22,11 @@ See the docker section below and the image on
 If you want to test new features before they land in the stable release, you can
 use the `staging` label.
 
+```sh
+docker pull picostack/pico:staging
+```
+
 ## Everything Else
 
-It's primarily a server side tool aimed at Linux servers, so there aren't any
-install scripts for other platforms. Most Windows/Mac usage is probably just
-local testing so just use `go get` for these use-cases.
-
-If there is a demand for a Windows/Mac binary release (via scoop and brew), it
-will be added.
+Please [open an issue](https://github.com/picostack/pico/issues/) if you want to
+see another installation method such as a package manager added to Pico!
