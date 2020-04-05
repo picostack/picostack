@@ -1,11 +1,29 @@
-# picostack
+<p align="center">
+  <a aria-label="Pico logo" href="https://pico.sh">
+    <img src="https://pico.sh/img/pico-wordmark-1000.png" width="420" />
+  </a>
+</p>
 
-What on earth is Pico Stack!?
+<p align="center">
+  <em>The little git robot of automation!</em>
+</p>
 
-Pico Stack is a set of technologies and general ethos around running services on small-footprint infrastructure.
+<p align="center">
+  <img
+    alt="GitHub Workflow Status"
+    src="https://img.shields.io/github/workflow/status/picostack/pico/Test?style=for-the-badge"
+  />
+  <img
+    alt="License"
+    src="https://img.shields.io/github/license/picostack/pico?style=for-the-badge"
+  />
+</p>
 
-It provides a lot of the benefits of large-scale platforms like Kubernetes but with just a few containers running on a single machine.
+<p align="center">
+  Pico is a Git-driven task runner built to facilitate GitOps and
+  Infrastructure-as-Code while securely passing secrets to tasks.
+</p>
 
----
-
-Very much a work in progress, so: More to come soon!
+<p align="center">
+  <a href="https://pico.sh">pico.sh</a>
+</p>
