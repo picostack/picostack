@@ -5,8 +5,8 @@ title: Reconfigure Events
 A Reconfigure is when Pico receives a commit in the
 [Configuration Repository](config-repo) and configures itself again at runtime.
 
-During a reconfigure, no new events are process. Though, configuration does not
-take very long so it's unlikely any events will be received anyway.
+During a reconfigure, no new events are processed. Though, configuration does
+not take very long so it's unlikely any events will be received anyway.
 
 ## The Process
 
