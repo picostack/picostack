@@ -63,7 +63,7 @@ docker network create \
 
 ## Deploy Vault
 
-::: warning
+:::warning
 
 The Vault section of this guide is _very brief_ and covers just enough to get a
 running, secure instance online. It _may_ become outdated as newer Vault
