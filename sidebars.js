@@ -27,5 +27,10 @@ module.exports = {
         "reference/docker",
       ],
     },
+    {
+      type: "category",
+      label: "Troubleshooting",
+      items: ["troubleshooting/git-errors"],
+    },
   ],
 };
