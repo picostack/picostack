@@ -10,6 +10,9 @@ manually resolve these issues if you need a quick fix. In the event you do run
 into one of these problems,
 [please open an issue](https://github.com/picostack/pico/issues)!
 
+Common causes for these problems are things like force-pushing Git tree changes
+and local repositories becoming dirty somehow (log files etc).
+
 ## Solution
 
 Simply deleting a repository fixes most Git state issues. You don't need to
