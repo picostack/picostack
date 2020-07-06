@@ -47,5 +47,8 @@ module.exports = {
         }
       }
     ]
+  ],
+  "plugins": [
+    "docusaurus-lunr-search"
   ]
 };
