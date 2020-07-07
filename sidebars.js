@@ -30,7 +30,7 @@ module.exports = {
     {
       type: "category",
       label: "Troubleshooting",
-      items: ["troubleshooting/git-errors"],
+      items: ["troubleshooting/git-errors", "troubleshooting/pico-errors"],
     },
   ],
 };
