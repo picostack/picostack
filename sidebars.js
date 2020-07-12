@@ -23,6 +23,7 @@ module.exports = {
         "reference/config-repo",
         "reference/configuration",
         "reference/reconfigure",
+        "reference/environment-variables",
         "reference/target",
         "reference/docker",
       ],
@@ -30,7 +31,11 @@ module.exports = {
     {
       type: "category",
       label: "Troubleshooting",
-      items: ["troubleshooting/git-errors", "troubleshooting/pico-errors"],
+      items: [
+        "troubleshooting/git-errors",
+        "troubleshooting/pico-errors",
+        "troubleshooting/exit-waiting-status",
+      ],
     },
   ],
 };
