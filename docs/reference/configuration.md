@@ -144,7 +144,7 @@ Expects an object with the following properties:
 | --------------------- | -------------------------- | -------------------------------------------------------------------------------------------------- |
 | `name` (**required**) | `string`                   | A label for the target - this is used as a directory name so it must be valid for your OS.         |
 | `url` (**required**)  | `string`                   | The repository URL to watch for changes, either http or ssh.                                       |
-| `branch`              | `string`                   | The git branch to use.                                                                             |
+| `branch`              | `string`                   | The git branch to use. This will also be appended (after a `_`) to the target directory path.      |
 | `up` (**required**)   | `Array<string>`            | The command to run on each new Git commit.                                                         |
 | `down`                | `Array<string>`            | Down specifies the command to run during either a graceful shutdown or when the target is removed. |
 | `env`                 | `[name: string]: string`   | Environment variables associated with the target - do not store credentials here!                  |
