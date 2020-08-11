@@ -225,9 +225,10 @@ done via the [Configuration Repository](../reference/config-repo).
 
 There's one issue here. Pico needs to be able to authenticate to access this
 configuration repository. We want to store Git login details securely. For this
-reason, Pico will, on initialisation, read a secret named `pico` from the
-secrets engine (Vault, in this example) and extract Git login details from there
-in order to access the configuration repository.
+reason, Pico will, on initialisation, read the
+[Configuration Secret](../reference/config-secret) named `pico` from the secrets
+engine (Vault, in this example) and extract Git login details from there in
+order to access the configuration repository.
 
 You can configure this path with the `vault-config-path` flag. But lets assume
 `pico` for now (which means `/kv/pico/` as the full path).

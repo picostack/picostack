@@ -131,6 +131,8 @@ A({
 This tells Pico: whenever it needs to pull or clone any target that uses the
 `my_org_github` auth, to look up the Git HTTP Basic Auth username and password
 in a secret at `secret/pico` under the keys `GIT_USERNAME` and `GIT_PASSWORD`.
+It's a common time-saving trick to just to re-use credentials from the
+[configuration secret](config-secret).
 
 Secrets are looked up for every use and not cached anywhere in Pico's memory or
 on disk. This means two things: secrets are always securely stored within Vault

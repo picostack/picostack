@@ -21,6 +21,7 @@ module.exports = {
       items: [
         "reference/reference",
         "reference/config-repo",
+        "reference/config-secret",
         "reference/configuration",
         "reference/reconfigure",
         "reference/environment-variables",
