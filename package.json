@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "docusaurus-lunr-search": "^1.0.2",
-    "@docusaurus/core": "^2.0.0-alpha.54",
+    "@docusaurus/core": "^2.4.3",
     "@docusaurus/preset-classic": "^2.0.0-alpha.54",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
